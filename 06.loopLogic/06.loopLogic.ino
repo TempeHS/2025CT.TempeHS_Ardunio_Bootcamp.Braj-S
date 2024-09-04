@@ -1,5 +1,5 @@
 /*
-  Author: 
+  Author: Braj Sapkota
 
   Learning Intention:
   The students understand loop logic and apply it to a range of control structures.
@@ -34,12 +34,20 @@
   Schematic: 
     
 */
+static unsigned int LEDpin = 3;
 
-void setup() {
-  
-}
+
+void setup() 
+  {
+  pinMode(LEDpin, OUTPUT);
+  }
 
 void loop() {
-      
+  for (int i = -255; i < 255; i++)
+  {
+    unsigned val = i;
+    analogWrite(LEDpin,i);
+    delay(10);
+  }
 }
 
