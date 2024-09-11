@@ -30,12 +30,48 @@ unsigned long greenLEDPreviousMillis = 0;
 const unsigned long blueLEDinterval = 2000;
 const unsigned long greenLEDinterval = 9000;
 
-void setup() {
-  Serial.begin(9600)
+void setup() 
+
+{
+  Serial.begin(9600);
+  Serial.println("Debug");
+  pinMode(blueLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+  
 }
 
 
 void loop() {
-  
+
+  //check to see if it's time to blink the LED; tjat is, if the difference
+  //between the current time and alst time you blinked the led is bigger than
+  //the interval at which you want to blink the led
+  unsigned long currentMillis = millis();
+
+if (currentMillis - blueLEDPreviousMillis >= blueLEDinterval) 
+{
+  blueLEDstate = !blueLEDstate;
+  digitalWrite(blueLED, blueLEDstate);
+  blueLEDPreviousMillis = currentMillis;
+}
+
+if (currentMillis - greenLEDPreviousMillis >= greenLEDinterval) 
+{
+  greenLEDstate = !greenLEDstate;
+  digitalWrite(greenLED, greenLEDstate);
+  greenLEDPreviousMillis = currentMillis;
+}
+
+  Serial.print("Millis:");
+  Serial.print(currentMillis);
+  Serial.print(",");
+  Serial.print("blueLED:");
+  Serial.print(blueLEDstate);
+  Serial.print(",");
+  Serial.print("greenLED:");
+  Serial.println(greenLEDstate);
+
+
+
 }
 
