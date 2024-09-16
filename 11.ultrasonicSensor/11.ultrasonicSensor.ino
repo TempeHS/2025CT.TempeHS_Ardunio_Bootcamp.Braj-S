@@ -24,12 +24,18 @@
 */
 
 #include "Ultrasonic.h"
+#include <Servo.h>
 
-void setup()
-{
-  
+Servo myservo;
+unsigned static int servoPin = 7;
+unsigned static int potPin = A2;
+
+void setup() {
+  myservo.attach(servoPin);
 }
-void loop()
-{
-  
+
+void loop() {
+  int val = analogRead(potPin);
+  val = map(val, 0, 1023, 180 , 0);
+  myservo.write(val);
 }
