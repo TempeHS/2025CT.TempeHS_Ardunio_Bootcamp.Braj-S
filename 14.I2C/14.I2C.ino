@@ -36,6 +36,9 @@
 #include <Wire.h>
 #endif
 
+unsigned int x = 120;
+unsigned int y = 60;
+
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* clock=*/ SCL, /* data=*/ SDA, /* reset=*/ U8X8_PIN_NONE);  // High speed I2C
 
@@ -48,12 +51,8 @@ void setup(void) {
 void loop(void) {
   u8g2.clearBuffer();                   // clear the internal memory
   u8g2.setFont(u8g2_font_ncenB08_tr);   // choose a suitable font
-  u8g2.drawStr(0,10,"The quick brown");    // write something to the internal memory
-  u8g2.drawStr(0,20,"fox jumps over");    // write something to the internal memory
-  u8g2.drawStr(0,30,"the lazy dog");    // write something to the internal memory
-  u8g2.drawStr(0,40,"The quick brown");    // write something to the internal memory
-  u8g2.drawStr(0,50,"fox jumps over");    // write something to the internal memory
-  u8g2.drawStr(0,60,"the lazy dog");    // write something to the internal memory
+  u8g2.setCursor(x, y);
+  u8g2.print("Game Over");
   u8g2.sendBuffer();                    // transfer internal memory to the display
   delay(1000);  
 }
