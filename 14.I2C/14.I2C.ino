@@ -48,7 +48,7 @@ void loop(void)
     delay(100);
    
  
- }
+ 
   Serial.print("x:");
   Serial.print(Accelerometer.readX());
   Serial.print("  ");
@@ -57,7 +57,7 @@ void loop(void)
   Serial.print("  ");
   Serial.print("z:");
   Serial.println(Accelerometer.readZ());
- 
+  
   delay(500);
- 
+ }
 }
